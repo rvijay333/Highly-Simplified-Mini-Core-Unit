@@ -58,6 +58,19 @@ vvp shader_core_tb.vvp
 
 # View waveform
 gtkwave dump.vcd
+```
+## THE CODE:
+### ALU :
+
+### INSTRUCTION DECODER :
+
+### REGISTER FILE :
+
+### CORE :
+
+### TEST BENCH:
+
+### TEST BECNCH 1 :
 
 ## RESULTS :
 ### For tb_shader_core.v
