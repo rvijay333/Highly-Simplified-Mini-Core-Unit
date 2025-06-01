@@ -233,6 +233,7 @@ endmodule
               // IF WE HAD NOT KEPT WE=1 , THEN MAYBE WE COULD HAVE USED LAST FOUR BITS FOR ENABLING OR DISABLING THE WE(WRITE ENABLE SIGNAL)
 
 ```
+in this test bench , there are fixed inputs in reg[0] and reg[1] , and results are updated in reg[2] to reg[7]
 
 ### TEST BECNCH 1 :
 ```
@@ -307,7 +308,7 @@ endmodule     // IGNORE THE LAST FOUR BITS OF INSTRUCTION , THEY ARE SERVING NO 
               // IF WE HAD NOT KEPT WE=1 , THEN MAYBE WE COULD HAVE USED LAST FOUR BITS FOR ENABLING OR DISABLING THE WE(WRITE ENABLE SIGNAL)
 
 ```
-
+in this test bench , there are different operands stored in , reg[0] to reg[6] , while reg[7] is updated with result values according to the incoming instruction
 ## RESULTS :
 ### For tb_shader_core.v
 ![simulation result](https://github.com/rvijay333/Highly-Simplified-Mini-Core-Unit/blob/main/Results/testbench_display.png)
