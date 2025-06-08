@@ -1,1 +1,27 @@
+module update1_instr_mem (
+    input [3:0] addr,
+    output [15:0] instr
+);
+    reg [15:0] mem [0:15];
 
+    assign instr = mem[addr];
+
+    initial begin
+        // Example instructions (opcode, ra, rb, wa)
+        mem[0] = 16'b000_000_001_010_0000; // ADD: R0 + R1 -> R2
+        mem[1] = 16'b001_000_001_011_0000; // SUB: R0 - R1 -> R3
+        mem[2] = 16'b010_000_001_100_0000; // AND: R0 & R1 -> R4
+        mem[3] = 16'b011_000_001_101_0000; // OR:  R0 | R1 -> R5
+        mem[4] = 16'b100_000_001_110_0000; // XOR: R0 ^ R1 -> R6
+        mem[5] = 16'b101_000_001_111_0000; // MUL: R0 * R1 -> R7
+        mem[6] = 16'b110_000_001_110_0000; // INC: R0 ++   -> R6
+        mem[7] = 16'b111_000_001_111_0000; // DEC: R0 --   -> R7
+
+    end
+endmodule
+
+// in the update 1 , ive kept R0=4 and R1=3
+// its initialized in the update1_tb_shader_core.v
+// IGNORE THE LAST FOUR BITS OF INSTRUCTION , THEY ARE SERVING NO PURPOSE 
+              // WE HAVE BY DEFAULT KEPT WE==1'B1 , SO NO USE OF LAST FOUR BITS 
+              // IF WE HAD NOT KEPT WE=1 , THEN MAYBE WE COULD HAVE USED LAST FOUR BITS FOR ENABLING OR DISABLING THE WE(WRITE ENABLE SIGNAL)
