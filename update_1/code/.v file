@@ -1,1 +1,53 @@
+module update1_shader_core (
+    input clk,
+    input reset
+);
+    // Wires
+    wire [3:0] pc;
+    wire [15:0] instr;
+    wire [2:0] opcode, ra, rb, wa;
+    wire [15:0] rd_a, rd_b, result;
+
+    // Program Counter
+    update1_program_counter pc_unit (
+        .clk(clk),
+        .reset(reset),
+        .pc(pc)
+    );
+
+    // Instruction Memory
+    update1_instr_mem imem_unit (
+        .addr(pc),  // so the idea : the value of pc , acts as the refrence(address) for fetching the instruction from instr_memory 
+        .instr(instr)
+    );
+
+    // Instruction Decoder
+    update1_instr_decoder decoder_unit (
+        .instr(instr),
+        .opcode(opcode),
+        .ra(ra),
+        .rb(rb),
+        .wa(wa)
+    );
+
+    // Register File
+    update1_reg_file rf (
+        .clk(clk),
+        .ra(ra),
+        .rb(rb),
+        .wa(wa),
+        .wd(result),
+        .we(1'b1),
+        .rd_a(rd_a),
+        .rd_b(rd_b)
+    );
+
+    // ALU
+    update1_alu alu_unit (
+        .a(rd_a),
+        .b(rd_b),
+        .opcode(opcode),
+        .result(result)
+    );
+endmodule
 
